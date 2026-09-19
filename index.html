@@ -145,7 +145,6 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 .goal-bar{height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
 .goal-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s;border-radius:6px}
 .goal-fill.done{background:linear-gradient(90deg,var(--success),#22c55e)}
-/* Calendar */
 .cal-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;margin-bottom:10px;border-radius:16px}
 .cal-head button{width:34px;height:34px;border-radius:10px;border:1px solid var(--border);background:var(--glass);color:var(--text);cursor:pointer;font-size:16px}
 .cal-head .cal-title{font-size:15px;font-weight:700}
@@ -162,7 +161,6 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 .cal-day .dot.h{background:var(--success)}
 .cal-day .dot.n{background:var(--warn)}
 .cal-day.today .dot{background:#fff}
-/* Focus Mode */
 #focusOverlay{position:fixed;inset:0;background:#000;z-index:200;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
 #focusOverlay.show{display:flex}
 #focusOverlay .f-time{font-size:80px;font-weight:800;color:#fff;letter-spacing:3px;margin-bottom:10px}
@@ -170,7 +168,6 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 #focusOverlay .f-controls{display:flex;gap:14px}
 #focusOverlay button{padding:16px 32px;border-radius:16px;border:none;cursor:pointer;font-family:inherit;font-size:16px;font-weight:700;background:#fff;color:#000}
 #focusOverlay button.ghost{background:transparent;color:#fff;border:1px solid #333}
-/* Task detail */
 .td-row{display:flex;gap:10px;align-items:center;margin-bottom:12px}
 .td-row .lbl{font-size:13px;color:var(--muted);min-width:70px}
 </style>
@@ -283,7 +280,7 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 <button class="nav-btn" data-tab="stats"><span class="ni">📊</span>آمار</button>
 </nav>
 
-<!-- Note Modal -->
+<!-- Modals (همون‌های قبلی، بدون تغییر) -->
 <div class="modal-bg" id="noteModal"><div class="modal">
 <h3 id="noteModalTitle">یادداشت جدید</h3>
 <input id="noteTitleIn" placeholder="عنوان">
@@ -291,7 +288,6 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 <div class="modal-actions"><button class="btn-ghost" id="noteCancel">لغو</button><button class="btn-primary" id="noteSave">ذخیره</button></div>
 </div></div>
 
-<!-- Task Detail Modal -->
 <div class="modal-bg" id="taskDetailModal"><div class="modal">
 <h3>⏰ یادآور</h3>
 <div class="td-row"><span class="lbl">ساعت</span><input type="time" id="taskReminderTime" style="flex:1;margin:0"></div>
@@ -303,7 +299,6 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 <div class="modal-actions"><button class="btn-ghost" id="tdClose" style="width:100%">بستن</button></div>
 </div></div>
 
-<!-- Help Modal -->
 <div class="modal-bg" id="helpModal"><div class="modal">
 <h3>📖 راهنمای اپ</h3>
 <div class="help-tabs" id="helpTabs"></div>
@@ -311,20 +306,16 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 <div class="modal-actions" style="margin-top:16px"><button class="btn-primary" id="helpClose">متوجه شدم</button></div>
 </div></div>
 
-<!-- Settings Modal -->
 <div class="modal-bg" id="settingsModal"><div class="modal">
 <h3>⚙️ تنظیمات</h3>
-
 <div class="setting-row"><div><div class="lbl">🎨 رنگ تم</div><div class="sub">یه رنگ انتخاب کن</div></div></div>
 <div class="theme-colors" id="themeColors"></div>
-
 <div class="setting-row" style="border-top:1px solid var(--border);margin-top:6px;padding-top:14px">
 <div><div class="lbl">🎯 اهداف روزانه</div><div class="sub">هر روز چقدر انجام بدی؟</div></div>
 </div>
 <div class="td-row"><span class="lbl">✅ تسک</span><input type="number" id="goalTasks" min="1" max="50" style="flex:1;margin:0"></div>
 <div class="td-row"><span class="lbl">🎯 عادت</span><input type="number" id="goalHabits" min="1" max="20" style="flex:1;margin:0"></div>
 <div class="td-row"><span class="lbl">🍅 پومو</span><input type="number" id="goalPomo" min="1" max="20" style="flex:1;margin:0"></div>
-
 <div class="setting-row" style="border-top:1px solid var(--border);padding-top:14px">
 <div><div class="lbl">🎵 صدای پومودورو</div><div class="sub">انتخاب صدای پایان</div></div>
 <select id="soundSelect" style="width:auto;margin:0">
@@ -334,12 +325,10 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 <option value="beep">بیپ</option>
 </select>
 </div>
-
 <div class="setting-row">
 <div><div class="lbl">🔔 نوتیفیکیشن</div><div class="sub" id="notifStatus">وضعیت</div></div>
 <button class="btn-sm" id="notifBtn">فعال‌سازی</button>
 </div>
-
 <div class="setting-row">
 <div><div class="lbl">💾 پشتیبان‌گیری</div><div class="sub">دانلود فایل JSON</div></div>
 <button class="btn-sm" id="exportBtn">دانلود</button>
@@ -357,32 +346,27 @@ nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:60;display:grid;grid
 <div><div class="lbl" style="color:var(--danger)">🗑 پاک کردن همه‌چیز</div><div class="sub">برگشت‌ناپذیر!</div></div>
 <button class="btn-sm danger" id="clearBtn">پاک کن</button>
 </div>
-
 <div class="modal-actions" style="margin-top:16px"><button class="btn-ghost" id="settingsClose">بستن</button></div>
 </div></div>
 
-<!-- Snapshots Modal -->
 <div class="modal-bg" id="snapshotsModal"><div class="modal">
 <h3>🗂 نسخه‌های قبلی</h3>
 <div id="snapshotsList"></div>
 <div class="modal-actions" style="margin-top:16px"><button class="btn-ghost" id="snapshotsClose">بستن</button></div>
 </div></div>
 
-<!-- Weather Modal -->
 <div class="modal-bg" id="weatherModal"><div class="modal">
 <h3>🌤 آب‌وهوا</h3>
 <div id="weatherDetail" style="text-align:center;padding:14px 0"></div>
 <div class="modal-actions"><button class="btn-ghost" id="weatherClose" style="width:100%">بستن</button></div>
 </div></div>
 
-<!-- Calendar Day Modal -->
 <div class="modal-bg" id="calDayModal"><div class="modal">
 <h3 id="calDayTitle">—</h3>
 <div id="calDayBody"></div>
 <div class="modal-actions" style="margin-top:16px"><button class="btn-ghost" id="calDayClose" style="width:100%">بستن</button></div>
 </div></div>
 
-<!-- Focus Overlay -->
 <div id="focusOverlay">
 <div class="f-time" id="focusTime">۲۵:۰۰</div>
 <div class="f-mode" id="focusMode">تمرکز</div>
@@ -399,36 +383,42 @@ const $$=s=>document.querySelectorAll(s);
 const faDigits=s=>String(s).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
 const todayKey=(d)=>{const x=d||new Date();return new Date(x.getTime()-x.getTimezoneOffset()*60000).toISOString().slice(0,10)};
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const DB={get(k,d){try{return JSON.parse(localStorage.getItem('sb_'+k))??d}catch{return d}},set(k,v){localStorage.setItem('sb_'+k,JSON.stringify(v))}};
+
+/* ===== Safe Storage (با try/catch) ===== */
+const DB={
+  get(k,d){try{return JSON.parse(localStorage.getItem('sb_'+k))??d}catch{return d}},
+  set(k,v){try{localStorage.setItem('sb_'+k,JSON.stringify(v))}catch(e){
+    if(e.name==='QuotaExceededError')console.warn('LocalStorage پر شد');
+    else console.warn('خطای ذخیره:',e);
+  }},
+  remove(k){try{localStorage.removeItem('sb_'+k)}catch(e){console.warn('خطای حذف:',e)}}
+};
 
 /* ===== State ===== */
+const DEFAULT_SETTINGS={theme:'dark',accent:'purple',sound:'bell',goals:{tasks:5,habits:3,pomo:4}};
 let state={
   tasks:DB.get('tasks',[]),
   habits:DB.get('habits',[]),
   notes:DB.get('notes',[]),
   pomo:DB.get('pomo',{today:todayKey(),todayCount:0,total:0,minutes:0}),
-  settings:DB.get('settings',{theme:'dark',accent:'purple',sound:'bell',goals:{tasks:5,habits:3,pomo:4}})
+  settings:DB.get('settings',DEFAULT_SETTINGS)
 };
-if(!state.settings.goals)state.settings.goals={tasks:5,habits:3,pomo:4};
+if(!Array.isArray(state.tasks))state.tasks=[];
+if(!Array.isArray(state.habits))state.habits=[];
+if(!Array.isArray(state.notes))state.notes=[];
+if(!state.settings||typeof state.settings!=='object')state.settings={...DEFAULT_SETTINGS};
+if(!state.settings.goals)state.settings.goals={...DEFAULT_SETTINGS.goals};
+if(!['dark','light'].includes(state.settings.theme))state.settings.theme='dark';
+if(!['purple','blue','pink','green','orange','red'].includes(state.settings.accent))state.settings.accent='purple';
+if(!['bell','birds','synth','beep'].includes(state.settings.sound))state.settings.sound='bell';
+
 const save=()=>{
   DB.set('tasks',state.tasks);DB.set('habits',state.habits);
   DB.set('notes',state.notes);DB.set('pomo',state.pomo);
   DB.set('settings',state.settings);
 };
-/* Daily snapshot (last 7 days) */
-function takeDailySnapshot(){
-  const key='sb_snapshots';
-  let snaps=DB.get('snapshots',{});
-  const today=todayKey();
-  if(!snaps[today]){
-    snaps[today]={tasks:state.tasks,habits:state.habits,notes:state.notes,pomo:state.pomo};
-    const dates=Object.keys(snaps).sort();
-    while(dates.length>7){delete snaps[dates.shift()]}
-    DB.set('snapshots',snaps);
-  }
-}
 
-/* ===== Clock & Greeting ===== */
+/* ===== Clock ===== */
 function tick(){
   const now=new Date();
   $('#clock').textContent=faDigits(String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'));
@@ -442,10 +432,8 @@ tick();setInterval(tick,1000);
 /* ===== Theme ===== */
 function applyTheme(){
   document.documentElement.setAttribute('data-theme',state.settings.theme);
-  document.documentElement.setAttribute('data-accent',state.settings.accent||'purple');
+  document.documentElement.setAttribute('data-accent',state.settings.accent);
   $('#themeBtn').textContent=state.settings.theme==='dark'?'🌙':'☀️';
-  const m=document.querySelector('meta[name=theme-color]');
-  if(m)m.content=state.settings.theme==='dark'?'#0a0a1a':'#eef2ff';
 }
 $('#themeBtn').onclick=()=>{state.settings.theme=state.settings.theme==='dark'?'light':'dark';save();applyTheme()};
 applyTheme();
@@ -501,7 +489,7 @@ function renderGoals(){
 $('#addTask').onclick=()=>{
   const v=$('#taskInput').value.trim();if(!v)return;
   state.tasks.unshift({id:Date.now()+'',title:v,prio:$('#taskPrio').value,done:false,createdAt:todayKey(),doneAt:null,reminder:null,reminderOn:false,lastReminded:null});
-  $('#taskInput').value='';save();renderTasks();takeDailySnapshot();
+  $('#taskInput').value='';save();renderTasks();
 };
 $('#taskInput').onkeydown=e=>{if(e.key==='Enter')$('#addTask').click()};
 $('#taskList').onclick=e=>{
@@ -509,7 +497,7 @@ $('#taskList').onclick=e=>{
   const id=el.closest('.task').dataset.id;
   const t=state.tasks.find(x=>x.id===id);if(!t)return;
   const act=el.dataset.act;
-  if(act==='toggle'){t.done=!t.done;t.doneAt=t.done?todayKey():null;save();renderTasks();takeDailySnapshot()}
+  if(act==='toggle'){t.done=!t.done;t.doneAt=t.done?todayKey():null;save();renderTasks()}
   else if(act==='del'){state.tasks=state.tasks.filter(x=>x.id!==id);save();renderTasks()}
   else if(act==='reminder'){openTaskDetail(id)}
 };
@@ -569,7 +557,7 @@ function renderHabits(){
 $('#addHabit').onclick=()=>{
   const v=$('#habitInput').value.trim();if(!v)return;
   state.habits.unshift({id:Date.now()+'',name:v,days:{}});
-  $('#habitInput').value='';save();renderHabits();takeDailySnapshot();
+  $('#habitInput').value='';save();renderHabits();
 };
 $('#habitInput').onkeydown=e=>{if(e.key==='Enter')$('#addHabit').click()};
 $('#habitList').onclick=e=>{
@@ -581,7 +569,7 @@ $('#habitList').onclick=e=>{
     const h=state.habits.find(x=>x.id===id);
     const k=day.dataset.day;
     if(h.days[k])delete h.days[k];else h.days[k]=true;
-    save();renderHabits();takeDailySnapshot();
+    save();renderHabits();
   }
 };
 
@@ -612,22 +600,103 @@ $('#noteSave').onclick=()=>{
   }else{
     state.notes.unshift({id:Date.now()+'',title:t,body:b,date:ds,createdAt:todayKey()});
   }
-  save();renderNotes();$('#noteModal').classList.remove('show');takeDailySnapshot();
+  save();renderNotes();$('#noteModal').classList.remove('show');
 };
 
-/* ===== POMODORO ===== */
+/* ===== POMODORO (بازنویسی شده با endAt) ===== */
 const POMO_FOCUS=25*60,POMO_BREAK=5*60;
-let pomoTime=POMO_FOCUS,pomoRunning=false,pomoMode='focus',pomoTimer=null;
-function fmtPomo(){const m=Math.floor(pomoTime/60),s=pomoTime%60;return faDigits(String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'))}
+const POMO_STATE_KEY='pomoTimer';
+
+function loadPomoState(){
+  const s=DB.get(POMO_STATE_KEY,null);
+  if(!s||typeof s!=='object')return null;
+  if(typeof s.mode!=='string'||typeof s.remaining!=='number')return null;
+  return s;
+}
+function savePomoState(mode,remaining,running,endAt){
+  DB.set(POMO_STATE_KEY,{mode,remaining,running,endAt});
+}
+function clearPomoState(){
+  DB.remove(POMO_STATE_KEY);
+}
+
+let pomoMode='focus';
+let pomoRemaining=POMO_FOCUS;
+let pomoRunning=false;
+let pomoEndAt=null;
+let pomoTimer=null;
+
+function restorePomo(){
+  const s=loadPomoState();
+  if(!s)return;
+  pomoMode=s.mode==='break'?'break':'focus';
+  pomoRunning=!!s.running;
+  if(pomoRunning&&s.endAt){
+    const now=Date.now();
+    pomoRemaining=Math.max(0,Math.round((s.endAt-now)/1000));
+    pomoEndAt=s.endAt;
+    if(pomoRemaining<=0){
+      finishPomoSession();
+    }else{
+      startPomoInterval();
+    }
+  }else{
+    pomoRemaining=Math.max(1,Math.round(s.remaining||POMO_FOCUS));
+    pomoEndAt=null;
+  }
+  renderPomo();
+}
+function startPomoInterval(){
+  clearInterval(pomoTimer);
+  pomoTimer=setInterval(()=>{
+    if(!pomoEndAt)return;
+    const now=Date.now();
+    const rem=Math.round((pomoEndAt-now)/1000);
+    pomoRemaining=Math.max(0,rem);
+    if(pomoRemaining<=0){
+      finishPomoSession();
+      return;
+    }
+    renderPomo();
+  },1000);
+}
+function finishPomoSession(){
+  clearInterval(pomoTimer);pomoTimer=null;
+  pomoRunning=false;pomoEndAt=null;
+  playSound(state.settings.sound||'bell');
+  if(pomoMode==='focus'){
+    state.pomo.todayCount++;state.pomo.total++;state.pomo.minutes+=25;
+    pomoMode='break';pomoRemaining=POMO_BREAK;
+  }else{
+    pomoMode='focus';pomoRemaining=POMO_FOCUS;
+  }
+  save();
+  clearPomoState();
+  savePomoState(pomoMode,pomoRemaining,false,null);
+  updatePomoButtons();
+  renderPomo();
+}
+function updatePomoButtons(){
+  const label=pomoRunning?'توقف':'شروع';
+  $('#pomoStart').textContent=label;
+  $('#focusStartBtn').textContent=label;
+}
+function fmtPomo(){
+  const m=Math.floor(pomoRemaining/60),s=pomoRemaining%60;
+  return faDigits(String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'));
+}
 function renderPomo(){
   $('#pomoTime').textContent=fmtPomo();
   $('#focusTime').textContent=fmtPomo();
-  $('#pomoMode').textContent=pomoMode==='focus'?'تمرکز':'استراحت';
-  $('#focusMode').textContent=pomoMode==='focus'?'تمرکز':'استراحت';
+  const modeLabel=pomoMode==='focus'?'تمرکز':'استراحت';
+  $('#pomoMode').textContent=modeLabel;
+  $('#focusMode').textContent=modeLabel;
   const total=pomoMode==='focus'?POMO_FOCUS:POMO_BREAK;
-  const deg=((total-pomoTime)/total)*360;
+  const deg=((total-pomoRemaining)/total)*360;
   $('#pomoCircle').style.background=`conic-gradient(var(--accent) ${deg}deg,rgba(255,255,255,.05) ${deg}deg)`;
-  if(state.pomo.today!==todayKey()){state.pomo={today:todayKey(),todayCount:0,total:state.pomo.total,minutes:state.pomo.minutes};save()}
+  if(state.pomo.today!==todayKey()){
+    state.pomo={today:todayKey(),todayCount:0,total:state.pomo.total,minutes:state.pomo.minutes};save();
+  }
   $('#pomoCount').textContent=faDigits(state.pomo.todayCount);
   $('#pomoTotal').textContent=faDigits(state.pomo.total);
   $('#pomoMin').textContent=faDigits(state.pomo.minutes);
@@ -653,22 +722,33 @@ function playSound(type){
   }catch(e){}
 }
 function pomoStart(){
-  if(pomoRunning){clearInterval(pomoTimer);pomoRunning=false;$('#pomoStart').textContent='ادامه';$('#focusStartBtn').textContent='ادامه';return}
-  pomoRunning=true;$('#pomoStart').textContent='توقف';$('#focusStartBtn').textContent='توقف';
-  pomoTimer=setInterval(()=>{
-    pomoTime--;
-    if(pomoTime<=0){
-      clearInterval(pomoTimer);pomoRunning=false;playSound(state.settings.sound||'bell');
-      if(pomoMode==='focus'){state.pomo.todayCount++;state.pomo.total++;state.pomo.minutes+=25;pomoMode='break';pomoTime=POMO_BREAK}
-      else{pomoMode='focus';pomoTime=POMO_FOCUS}
-      $('#pomoStart').textContent='شروع';$('#focusStartBtn').textContent='شروع';save();
+  if(pomoRunning){
+    // توقف: محاسبه دقیق زمان باقی‌مانده
+    if(pomoEndAt){
+      pomoRemaining=Math.max(1,Math.round((pomoEndAt-Date.now())/1000));
     }
+    clearInterval(pomoTimer);pomoTimer=null;
+    pomoRunning=false;pomoEndAt=null;
+    savePomoState(pomoMode,pomoRemaining,false,null);
+    updatePomoButtons();
     renderPomo();
-  },1000);
+    return;
+  }
+  pomoRunning=true;
+  pomoEndAt=Date.now()+pomoRemaining*1000;
+  savePomoState(pomoMode,pomoRemaining,true,pomoEndAt);
+  updatePomoButtons();
+  startPomoInterval();
+  renderPomo();
 }
 function pomoReset(){
-  clearInterval(pomoTimer);pomoRunning=false;pomoMode='focus';pomoTime=POMO_FOCUS;
-  $('#pomoStart').textContent='شروع';$('#focusStartBtn').textContent='شروع';renderPomo();
+  clearInterval(pomoTimer);pomoTimer=null;
+  pomoRunning=false;pomoEndAt=null;
+  pomoMode='focus';pomoRemaining=POMO_FOCUS;
+  clearPomoState();
+  savePomoState('focus',POMO_FOCUS,false,null);
+  updatePomoButtons();
+  renderPomo();
 }
 $('#pomoStart').onclick=pomoStart;
 $('#focusStartBtn').onclick=pomoStart;
@@ -676,7 +756,7 @@ $('#pomoReset').onclick=pomoReset;
 $('#pomoFocusBtn').onclick=()=>$('#focusOverlay').classList.add('show');
 $('#focusExitBtn').onclick=()=>$('#focusOverlay').classList.remove('show');
 
-/* ===== WEATHER ===== */
+/* ===== WEATHER (با cache: no-store و error handling) ===== */
 const TEHRAN={lat:35.6892,lon:51.3890};
 function weatherIcon(code){
   if(code===0)return'☀️';if(code<=3)return'🌤';if(code<=48)return'☁️';
@@ -689,14 +769,22 @@ async function fetchWeather(){
   if(cached&&now-cached.time<1800000){renderWeather(cached.data);return}
   try{
     const url=`https://api.open-meteo.com/v1/forecast?latitude=${TEHRAN.lat}&longitude=${TEHRAN.lon}&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m&timezone=Asia/Tehran`;
-    const res=await fetch(url);
+    const res=await fetch(url,{cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
     const data=await res.json();
+    if(!data||!data.current)throw new Error('Bad data');
     DB.set('weather',{time:now,data});
     renderWeather(data);
   }catch(e){
+    // API قطع → آخرین داده ذخیره‌شده
     const c=DB.get('weather',null);
-    if(c)renderWeather(c.data);
-    else{$('#wIcon').textContent='🌫';$('#wTemp').textContent='--°'}
+    if(c&&c.data){
+      renderWeather(c.data);
+    }else{
+      $('#wIcon').textContent='🌫';
+      $('#wTemp').textContent='—';
+      $('#weatherDetail').innerHTML='<div class="empty"><div class="empty-icon">🌫</div>داده آب‌وهوا در دسترس نیست</div>';
+    }
   }
 }
 function renderWeather(data){
@@ -704,7 +792,6 @@ function renderWeather(data){
   const c=data.current;
   $('#wIcon').textContent=weatherIcon(c.weather_code);
   $('#wTemp').textContent=faDigits(Math.round(c.temperature_2m))+'°';
-  const w=data;
   $('#weatherDetail').innerHTML=`
     <div style="font-size:60px;margin-bottom:10px">${weatherIcon(c.weather_code)}</div>
     <div style="font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">${faDigits(Math.round(c.temperature_2m))}°C</div>
@@ -735,7 +822,7 @@ $('#notifBtn').onclick=async()=>{
 };
 function showNotif(title,body){
   if(!('Notification' in window)||Notification.permission!=='granted')return;
-  try{new Notification(title,{body,icon:'icon.svg',badge:'icon.svg',dir:'rtl',lang:'fa'})}catch(e){}
+  try{new Notification(title,{body,icon:'icon.svg',dir:'rtl',lang:'fa'})}catch(e){}
 }
 function checkReminders(){
   const now=new Date();
@@ -756,8 +843,7 @@ let viewDate=new Date();
 function getPersianDate(date){
   try{
     const fmt=new Intl.DateTimeFormat('en-US-u-ca-persian',{year:'numeric',month:'numeric',day:'numeric'});
-    const parts=fmt.formatToParts(date);
-    const r={};parts.forEach(p=>r[p.type]=p.value);
+    const parts=fmt.formatToParts(date);const r={};parts.forEach(p=>r[p.type]=p.value);
     return{year:parseInt(r.year),month:parseInt(r.month),day:parseInt(r.day)};
   }catch(e){return{year:0,month:0,day:0}}
 }
@@ -800,7 +886,7 @@ function renderCalendar(){
   $('#calGrid').innerHTML=html;
 }
 $('#calPrev').onclick=()=>{
-  const{p,start}=getPersianMonthData();
+  const{start}=getPersianMonthData();
   viewDate=new Date(start);viewDate.setDate(viewDate.getDate()-1);
   renderCalendar();
 };
@@ -864,14 +950,12 @@ function renderStats(){
   $('#habitsChart').innerHTML=days.map(d=>{const v=hByDay[d.key];const h=Math.max(3,(v/maxH)*100);return `<div class="bar" style="height:${h}%"><div class="val">${faDigits(v)}</div><div class="lbl">${DAY_NAMES[d.jsDay]}</div></div>`}).join('');
   $('#achGrid').innerHTML=ACHIEVEMENTS.map(a=>{const u=a.check(state);return `<div class="ach ${u?'unlocked':''}"><div class="ach-icon">${a.icon}</div><div class="ach-title">${a.title}</div><div class="ach-desc">${a.desc}</div></div>`}).join('');
 }
-/* Share stats as image */
 $('#shareStatsBtn').onclick=async()=>{
   const c=document.createElement('canvas');c.width=800;c.height=1000;
   const ctx=c.getContext('2d');
   const grad=ctx.createLinearGradient(0,0,800,1000);
   grad.addColorStop(0,'#0a0a1a');grad.addColorStop(1,'#131328');
   ctx.fillStyle=grad;ctx.fillRect(0,0,800,1000);
-  // Decorative circles
   const g1=ctx.createRadialGradient(100,100,0,100,100,300);g1.addColorStop(0,'rgba(139,92,246,.3)');g1.addColorStop(1,'rgba(139,92,246,0)');
   ctx.fillStyle=g1;ctx.fillRect(0,0,800,1000);
   const g2=ctx.createRadialGradient(700,900,0,700,900,300);g2.addColorStop(0,'rgba(6,182,212,.25)');g2.addColorStop(1,'rgba(6,182,212,0)');
@@ -891,7 +975,7 @@ $('#shareStatsBtn').onclick=async()=>{
     {icon:'📝',val:state.notes.length,lbl:'یادداشت'}
   ];
   cards.forEach((card,i)=>{
-    const x=50+(i%2)*370, y=220+Math.floor(i/2)*220;
+    const x=50+(i%2)*370,y=220+Math.floor(i/2)*220;
     ctx.fillStyle='rgba(255,255,255,.06)';
     ctx.beginPath();ctx.roundRect(x,y,350,180,24);ctx.fill();
     ctx.strokeStyle='rgba(255,255,255,.1)';ctx.lineWidth=1;ctx.stroke();
@@ -907,7 +991,6 @@ $('#shareStatsBtn').onclick=async()=>{
   ctx.fillText(`🏆 ${faDigits(unlocked)} از ${faDigits(ACHIEVEMENTS.length)} دستاورد باز شده`,400,720);
   ctx.fillStyle='#94a3b8';ctx.font='16px Vazirmatn, sans-serif';
   ctx.fillText('github.com/MMN-software/second-brain',400,770);
-  // Progress bar
   ctx.fillStyle='rgba(255,255,255,.08)';
   ctx.beginPath();ctx.roundRect(100,800,600,24,12);ctx.fill();
   const pct=unlocked/ACHIEVEMENTS.length;
@@ -1024,13 +1107,19 @@ $('#themeColors').onclick=e=>{
   };
 });
 $('#soundSelect').onchange=e=>{state.settings.sound=e.target.value;save();playSound(e.target.value)};
+
+/* ===== EXPORT (با try/catch) ===== */
 $('#exportBtn').onclick=()=>{
-  const data={version:2,exportedAt:new Date().toISOString(),state};
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=`second-brain-${todayKey()}.json`;a.click();
-  URL.revokeObjectURL(url);
+  try{
+    const data={version:2,exportedAt:new Date().toISOString(),state};
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download=`second-brain-${todayKey()}.json`;a.click();
+    URL.revokeObjectURL(url);
+  }catch(e){alert('❌ خطا در پشتیبان‌گیری: '+e.message)}
 };
+
+/* ===== IMPORT (با اعتبارسنجی کامل) ===== */
 $('#importBtn').onclick=()=>$('#importFile').click();
 $('#importFile').onchange=e=>{
   const f=e.target.files[0];if(!f)return;
@@ -1038,18 +1127,42 @@ $('#importFile').onchange=e=>{
   r.onload=ev=>{
     try{
       const data=JSON.parse(ev.target.result);
-      if(!data.state)throw new Error('bad');
+      if(!data||typeof data!=='object'||!data.state||typeof data.state!=='object')
+        throw new Error('ساختار فایل معتبر نیست');
+
+      const s=data.state;
+      // اعتبارسنجی آرایه‌ها
+      if(!Array.isArray(s.tasks))s.tasks=[];
+      if(!Array.isArray(s.habits))s.habits=[];
+      if(!Array.isArray(s.notes))s.notes=[];
+
+      // اعتبارسنجی تنظیمات
+      if(!s.settings||typeof s.settings!=='object')s.settings={};
+      const d={theme:'dark',accent:'purple',sound:'bell',goals:{tasks:5,habits:3,pomo:4}};
+      if(!['dark','light'].includes(s.settings.theme))s.settings.theme=d.theme;
+      if(!['purple','blue','pink','green','orange','red'].includes(s.settings.accent))s.settings.accent=d.accent;
+      if(!['bell','birds','synth','beep'].includes(s.settings.sound))s.settings.sound=d.sound;
+      if(!s.settings.goals||typeof s.settings.goals!=='object')s.settings.goals={...d.goals};
+
+      // اعتبارسنجی pomo
+      if(!s.pomo||typeof s.pomo!=='object')s.pomo={today:todayKey(),todayCount:0,total:0,minutes:0};
+
       if(!confirm('داده‌های فعلی با فایل جایگزین بشن؟'))return;
-      state=data.state;
-      if(!state.settings.goals)state.settings.goals={tasks:5,habits:3,pomo:4};
+
+      state=s;
       save();applyTheme();
       renderTasks();renderHabits();renderNotes();renderPomo();
       if($('#view-stats').classList.contains('active'))renderStats();
-      alert('✅ بازیابی شد');$('#settingsModal').classList.remove('show');
-    }catch(err){alert('❌ فایل معتبر نیست')}
+      alert('✅ بازیابی شد');
+      $('#settingsModal').classList.remove('show');
+    }catch(err){
+      alert('❌ فایل معتبر نیست: '+err.message);
+    }
   };
   r.readAsText(f);
 };
+
+/* ===== SNAPSHOTS ===== */
 $('#snapshotsBtn').onclick=()=>{
   const snaps=DB.get('snapshots',{});
   const dates=Object.keys(snaps).sort().reverse();
@@ -1070,31 +1183,43 @@ $('#snapshotsList').onclick=e=>{
   const b=e.target.closest('[data-restore]');if(!b)return;
   const d=b.dataset.restore;
   if(!confirm(`همه‌ی داده‌های فعلی با نسخه‌ی ${d} جایگزین بشه؟`))return;
-  const snaps=DB.get('snapshots',{});
-  const snap=snaps[d];if(!snap)return;
+  const snaps=DB.get('snapshots',{});const snap=snaps[d];if(!snap)return;
   state.tasks=snap.tasks||[];state.habits=snap.habits||[];state.notes=snap.notes||[];state.pomo=snap.pomo||state.pomo;
   save();renderTasks();renderHabits();renderNotes();renderPomo();
   alert('✅ بازگردانی شد');$('#snapshotsModal').classList.remove('show');
 };
+
+/* ===== CLEAR (پاک کردن pomoTimer) ===== */
 $('#clearBtn').onclick=()=>{
   if(!confirm('⚠️ همه‌ی داده‌ها پاک بشن؟'))return;
   if(!confirm('مطمئنی؟ برگشت‌ناپذیره!'))return;
-  ['tasks','habits','notes','pomo','snapshots','weather'].forEach(k=>localStorage.removeItem('sb_'+k));
+  ['tasks','habits','notes','pomo','snapshots','weather','settings'].forEach(k=>DB.remove(k));
+  clearPomoState();
   state.tasks=[];state.habits=[];state.notes=[];
   state.pomo={today:todayKey(),todayCount:0,total:0,minutes:0};
-  save();renderTasks();renderHabits();renderNotes();renderPomo();
+  state.settings={...DEFAULT_SETTINGS};
+  save();applyTheme();
+  renderTasks();renderHabits();renderNotes();renderPomo();
   if($('#view-stats').classList.contains('active'))renderStats();
+  // تایمر به حالت اولیه
+  clearInterval(pomoTimer);pomoTimer=null;
+  pomoRunning=false;pomoEndAt=null;pomoMode='focus';pomoRemaining=POMO_FOCUS;
+  updatePomoButtons();renderPomo();
   alert('🗑 پاک شد');$('#settingsModal').classList.remove('show');
 };
 
 /* ===== INIT ===== */
-renderTasks();renderHabits();renderNotes();renderPomo();
-takeDailySnapshot();
+renderTasks();renderHabits();renderNotes();
+restorePomo();renderPomo();
 if(!localStorage.getItem('sb_seen')){
   localStorage.setItem('sb_seen','1');
   setTimeout(()=>openHelp('tasks'),600);
 }
-if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})})}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
 </script>
 </body>
 </html>
