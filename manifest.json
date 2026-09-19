@@ -1,0 +1,15 @@
+{
+  "name": "مغز من — Second Brain",
+  "short_name": "مغز من",
+  "description": "دستیار شخصی: کارها، عادت‌ها، یادداشت و پومودورو",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a1a",
+  "theme_color": "#8b5cf6",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
